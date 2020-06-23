@@ -1,0 +1,438 @@
+@charset "UTF-8";
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+
+/** Header y Hero **/
+.header {
+  width: 100%;
+  background-image: url("../img/back.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 80vh;
+  position: relative;
+  margin: auto;
+}
+
+.header .wave {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+.nav {
+  width: inherit;
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+.nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+ul .link-item {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.text-typed {
+  font-weight: bold;
+  color: #27AE60;
+}
+
+ul .link-item:hover {
+  text-decoration: underline;
+}
+
+.header-text {
+  height: 550px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.header-text .title {
+  font-size: 90px;
+  margin: 0;
+}
+
+.header-text .subtitle {
+  font-size: 60px;
+}
+
+/** Courses **/
+.courses .title-section {
+  font-size: 40px;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.courses .subtitle-section {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  color: #2ecc71;
+}
+
+.web {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 10.5rem;
+}
+
+.web .card {
+  width: 31%;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+
+.card .card-img {
+  width: 90%;
+  height: 250px;
+  margin: auto;
+}
+
+.card .card-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  object-fit: contain;
+  transition: transform .5s ease;
+}
+
+.card .card-img img:hover {
+  transform: scale(1.1);
+}
+
+.card .title-course {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.card-information {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-description-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+.btn {
+  color: white;
+  padding: .4em .6em;
+  display: block;
+  width: 90%;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #27AE60;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.btn:hover {
+  background-color: #209450;
+}
+
+.card:hover {
+  box-shadow: 0 0 16px 3px #cec8c8;
+}
+
+.mobile {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+
+.mobile .card {
+  width: 31%;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+
+/** Contacto **/
+.contact {
+  padding: 60px 0;
+  width: 100%;
+  margin: auto;
+  background-color: #27AE60;
+  color: white;
+  text-align: center;
+}
+
+.contact .contact-title {
+  font-size: 60px;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.contact .contact-subtitle {
+  font-size: 40px;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.contact .contact-text {
+  font-size: 35px;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.contact .email {
+  font-size: 80px;
+  margin: 10px 0;
+}
+
+.contact .network {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.network .telegram {
+  width: 250px;
+  height: 250px;
+  background-color: #0088CC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.network .whatsapp {
+  width: 250px;
+  height: 250px;
+  background-color: #4AC959;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.network .facebook {
+  width: 250px;
+  height: 250px;
+  background-color: #3B5998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.network .telegram:hover {
+  box-shadow: 0 0 16px 3px #cec8c8;
+}
+
+.network .whatsapp:hover {
+  box-shadow: 0 0 16px 3px #cec8c8;
+}
+
+.network .facebook:hover {
+  box-shadow: 0 0 16px 3px #cec8c8;
+}
+
+/** Pié de Página1 **/
+.footer {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #2C3E50;
+  color: white;
+}
+
+.footer h6 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.footer .social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.footer .social .circle {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  border-radius: 50%;
+  margin-right: 30px;
+}
+
+@media screen and (max-width: 800px) {
+  .header-text {
+    height: 200px;
+  }
+  .header-text .title {
+    font-size: 80px;
+  }
+  .header-text .subtitle {
+    font-size: 40px;
+  }
+  .web {
+    width: 100%;
+  }
+  .web .card {
+    width: 44%;
+    margin: 30px 0;
+  }
+  .mobile {
+    width: 100%;
+  }
+  .mobile .card {
+    width: 44%;
+    margin: 30px 0;
+  }
+  .card-information {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card-description-btn {
+    text-align: justify;
+  }
+  .contact .contact-title {
+    font-size: 28px;
+  }
+  .contact .contact-subtitle {
+    font-size: 24px;
+  }
+  .contact .email {
+    margin-top: 20px;
+    font-size: 55px;
+  }
+  .network .telegram {
+    width: 150px;
+    height: 150px;
+    background-color: #0088CC;
+  }
+  .network .facebook {
+    width: 150px;
+    height: 150px;
+    background-color: #3B5998;
+  }
+  .network .whatsapp {
+    width: 150px;
+    height: 150px;
+    background-color: #4AC959;
+  }
+  .footer h6 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .nav {
+    flex-direction: column;
+  }
+  .nav ul {
+    width: 100%;
+    text-align: center;
+  }
+  ul .link-item {
+    font-size: 18px;
+  }
+  .header-text .title {
+    font-size: 45px;
+  }
+  .header-text .subtitle {
+    font-size: 25px;
+  }
+  .header {
+    height: 50vh;
+  }
+  .header .wave {
+    display: none;
+  }
+  .web {
+    width: 100%;
+  }
+  .web .card {
+    width: 90%;
+    margin: 30px 0;
+  }
+  .mobile {
+    width: 100%;
+  }
+  .mobile .card {
+    width: 90%;
+    margin: 30px 0;
+  }
+  .contact .contact-title {
+    font-size: 22px;
+    margin: 15px 0;
+  }
+  .contact .contact-subtitle {
+    font-size: 18px;
+  }
+  .contact .contact-text {
+    font-size: 18px;
+  }
+  .contact .email {
+    margin-top: 20px;
+    font-size: 25px;
+  }
+  .network .telegram {
+    width: 100px;
+    height: 100px;
+    background-color: #0088CC;
+  }
+  .network .facebook {
+    width: 100px;
+    height: 100px;
+    background-color: #3B5998;
+  }
+  .network .whatsapp {
+    width: 100px;
+    height: 100px;
+    background-color: #4AC959;
+  }
+  .footer h6 {
+    font-size: 16px;
+  }
+  .footer .social {
+    margin-left: 30px;
+  }
+}
+/*# sourceMappingURL=style.css.map */

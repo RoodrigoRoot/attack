@@ -1,0 +1,114 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+<body>
+    {% block content %}
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <h2>Logo</h2>
+                <ul>
+                    <li>
+                        <a class="link-item" href="#">Inicio</a>
+                        <a class="link-item" href="#courses">Cursos</a>
+                        <a class="link-item" href="#contact">Contacto</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-text">
+            <h1 class="title animate__animated  animate__backInDown">CodeAttack</h1>
+            <h2 class="subtitle">Creamos <span class="typed"></span> </h2>
+
+        </div>
+        <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+                style="height: 100%; width: 100%;">
+                <path d="M-3.96,28.90 C150.00,150.00 610.61,138.45 520.31,-73.73 L516.92,155.22 L0.00,150.00 Z"
+                    style="stroke: none; fill: #fff;"></path>
+            </svg></div>
+    </header>
+    <main>
+        <section class="courses" id="courses">
+            <h2 class="title-section">Cursos</h2>
+            <div class="container">
+                <h3 class="subtitle-section">Desarrollo Web</h3>
+                <section class="web">
+                    {% for card in cards_web %}
+                    <article class="card">
+                        <div class="card-img">
+                            <a href="#">
+                                <img src="{{card.image.url}}" alt="Python">
+                            </a>
+                        </div>
+                        <h3 class="title-course">{{card.title}}</h3>
+                        <div class="card-information">
+                            <p><b>Inicio: </b>{{card.start|date:"SHORT_DATE_FORMAT"}}</p>
+                            <p><b>Costo:</b>{{card.price}}USD</p>
+                        </div>
+                        <div class="card-description-btn">
+                            <p>{{card.description}}</p>
+                            <a class="btn" href="#">Ver más -></a>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </section>
+
+                <h3 class="subtitle-section">Desarrollo Movíl</h3>
+                <section class="mobile">
+                    {% for card in cards_mobile %}
+                    <article class="card">
+                        <div class="card-img">
+                            <a href="#">
+                                <img src="{{card.image.url}}" alt="Python">
+                            </a>
+                        </div>
+                        <h3 class="title-course">{{card.title}}</h3>
+                        <div class="card-information">
+                            <p><b>Inicio:</b>{{card.start}}</p>
+                            <p><b>Costo:</b>{{card.price}}USD</p>
+                        </div>
+                        <div class="card-description-btn">
+                            <p>{{card.description}}</p>
+                            <a class="btn" href="#">Ver más -></a>
+                        </div>
+
+                    </article>
+                    {% endfor %}
+            </div>
+        </section>
+        </section>
+    </main>
+    <section class="contact" id="contact">
+        <div class="container">
+            <h3 class="contact-title">¿Tienes alguna duda, proyecto o idea?</h3>
+            <h4 class="contact-subtitle">Hagamosla realidad</h4>
+            <h5 class="contact-text">¡Contactanos!</h5>
+            <h6 class="email">hola@dominio.com</h6>
+            <div class="network">
+                <div class="telegram">
+                    <a href="#">
+                        <img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAC30lEQVR4nO2a0XXiMBBFKYESKIES6GDpIO4g6SDuYNNB3MGmg9DBpoPQwdLB3Q8ZMEaWJWvkwSdzv2NJ7yE9aRStVoZhGIZhGIZhGEkAW+0xPBzAL+CdK/9+vFHABngFvvHzoT1GFYAn4M+AKTdoj3U2gC3wu1060WiPuyjAup0tf1NM6XDQ1lAEYMdt4E6l0dYiBuOBO4UXbV3ZkBC4E1jmNs/EwE1FW2cS5AfuEajatt4i/v6gqzgSroGbM1vegHXb3nPsN9raB8EF7jP5gftFJ0dI29n2mh54wdVDEoF7Aupe2ynmAGx0XOiBmy2SgXvoisNlV2punRQtEQlcryh6y2KiOaAV0MgEro+GNoQ7fW2ZnmH1nKZIBa6PI7Dz9Lkl70e4a7OEMVKBO0Q90O+e/Bm69rUtYco5cL8zBxjiJoR7/VcC7R+lTTkH7qfA4EKcCBSPyJgDUhU8bp2/U7geavkgMO2Rudo4k1fB42ZMyWzp4g3hguYw1l+MQZ/CAxriUj8FfijxsWSZ0w7sJD2oHjf1U8AcyUPmpW8Jg7atCGmCIdzrv4Q5IFnB47b0F2TMGty6PeaU3BQqMYM8ZlW43SaFu/op0MeO8jtm+StWXD5UuPoolFfBEO61KXXGCaFTweOO/g1uy4aIrbv3/RzmwCNcsZI4hXFly1zUhWSXAfkD4BiPd8Xqg3lP6l022tpHodwBcIyjtvYogFrBHFjKOyBFg2pt7VGQftCUYqetPQpcyTE72rqjUTIov4KfCyWDGm3d0USI+UI+p5bzSGpEyOVeGnfNIsVyHkkFRDSevxW5uFOQOQ3cKTrKnN43TYY/h/kUZoK7EIs2p/dtxbS78sd9JNXHY1CT+P2UJbeMCn61ujOomdjGmrj3h2c2sioKwnWZ1AJt7RlfcrqPpFJB+EUF7h8JoSW3jAq+NIElt5z8KU275LqzaTm715zgQrzM4yjDMAzDMAzDMCL4D4h7dxlDYQZsAAAAAElFTkSuQmCC" /></a>
+                </div>
+                <div class="whatsapp">
+                    <a href="#">
+                        <img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAEJ0lEQVR4nO2b63HiMBSFUwIluAQ6WDpIOog7CB3EHWw6wB1AB7iDuAPTAXTw7Q+JXSJfPWxLMjujM8OECZbu1dF96eGXl4KCgoKCgoKCgoJnAVAB78Bv4Ax8M8ZV/3YAPoFfa+udFMBWEzIIZEzBAXhdezzRALxqS4iNK8qyNmuPcRaAHbLrpCDqY+3xBgPYoNwgFBegA1qg0Z8v/b9uQj/fwHbt8TuBijODZyA3TcAbge6h+90DfQBRz2lNQO1RvAPeIsipUNbmwiHGmKLBQ84F2CWQWQEnh9wzzxDAPeQ0GeTvUG4rkpRavk85Gzm3FFbj0GODPaCv426owHkVFOpZKZtgj0373IpskGucCyv7vYOkfJOGqlUkt3qKOsTibkMu4VvLDC1O4bGgLVwK3E0O4WdB8JenTYVaN30C78mVfPmb3UxcSRkCLNbjjDvIma5OpuRP2VI8anILrB3P2zJdlvoE2dXSWJEWNrIeT5uz0OaOLAEdte4LntQlgiRXsdYXqLjjQhtdyXA9TikESeseV+x58xCUNmD+1GWU9lMIMWOJcxaQayUTdXRFZV0k69/FFCClTGf5HkhQG01Jty6SmzUxBUyeAUsbE9kqb1Q58oguZucjawho4wvSdTQFA8A4Dn2n7DwoyEntNOJnEb8uo3Qfs3NzoF1gOyl2QabYY+gy2QumdD6LIEvbO7Ku/J+ZoAp5ZT2Qce8oN0GT9lawZ7RjNCX9OiQlaHGAw77Tl2XPWJIfs3Op6JvsHtgP/o6+/lBWeGTmfhJjL+jn9GPrXFpX7Wb0s3GQZD06ZpwNh6lEMXGpNAlELNU9JIG6IrN5eN62pxRMFPJG3yz9XULMTDS7Eg0g6Yq+B0TYDRHfwnkvtNnN1d8mRAqy1YL+fCRNQeeRNSJ5rt4uIVIcaiL0K+34TUXr6F8KD9bnlw7GdLOBCMUeKgibq+0psB45IVt+miMqi7AmYv97YRJ8aB39SdZziaVvqMCoW6eo2FQTdrvMdx53FtqkPadHtiKnogtkVSirOmnCev33C0+CQI6Zt5iTaRMsbWE0SYVOhCZWqp3qHMKlZccuueBAYL950uVSwIwNtyyCA+AgJ8/NE+TT1ezbpxIc5ORxLa2EFPjy3t6S9do6yEmSQGyKSFVv5Xi+InHWAD6wL2bblLIlZQZDgYvxe4V6i+fw8OxAgjtBqGx6thCzCjlSkXhCrbhD3uIZNHmLLIqwl2PyudWDYiEnpaE4olzD+w4YKvi+oqzS5kp33FjrKiDuW+1LcbZ8puDEgu2XGAT5Zs9ET7z9HhcurH2BFPvNVlPRFuMtHsJePpmDnszn+1YgLy/uhNQEmDb/VulLXLUnYKGaHajlxU0Pbk+Esh2Vpvea5O7h0z98P+nJCX63bBXEIKSgoKCgoKCgoOD/wh9ebK9KB4T8FAAAAABJRU5ErkJggg==" /></a>
+                </div>
+                <div class="facebook">
+                    <a href="#">
+                        <img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAADIElEQVR4nO2b7XHqMBBFUwIluIR0EJVACXQQOggdJB3gDkIHqAPoICVAB+f9kD2PGAfrY1cSM7oz/IrRXh2k9eojLy9NTU1NTU1NAQLegA9gDxyBE/c6DX/bD8++lfatJmAFvA8dTtVxaGtVul/JAgzwLQDlL30DpnQ/gzWAOSqCmer4FKBwU2mfEcxUe2qdesAauBSEM+oCrEvz+CXgszSVGX2W5jJOqblXdC06UWrKUT+cUfkh8TxwRuWFxHPBGXXKBecrc8eugJ18zpFtfWnDWQt1ekkW2ACdh6dXwoDplAC4vKNd55yJqIhxQH11QSMfAb0Kkv/qY40TBgigl4Zj5Hn80jnRXyggkFy7obvwvJI45IkDdJSCoz16dgIeYwCBxCgCDoIw5tQVBHRIDbwSBDGn4NyD266dflIK1/jpDWyTur8s78INty+tUWZsUwDFDl1f7Tx97BQ92BRA2tp4eFAvUGPhaL+9wOMtUouPOWOaw9rbGHkA7WIAaS8toB5AfQwg7QQN9QCyMYB+MhirBdBPDKAcqgVQ+JsshykaoIQizN+nyHIoJrCErDySO58iIywm8FUgrpVHcudzI+DzGhNY4jVv5ZHc+ZQoaMN9IlMohgcO9ynxQ/Yxgcv8MuE+JQ4xdzGBJZKfFSdy71NCplRwK0rj3t+rgMe47Y7BQOwR76gT81uk42dxuxNX5/z1/fdEf5By5IT+lqvx8KBdSSdtuXbK5moA1EUDGgxqHvuUBpR27JPBYGlAi/F9IWltnpUEZEXgKJssCWgxdigkjVxUClB67pkxukJmhX+rEoCSb5M8Mit9Ba8EIN1b+Mhe4swNqFeFc2M6dQkyynjEkgKUdIstSLh8JAHJeMSSAHSm0G37VEjGI04qoPxwbsynQjIeMVIAlYMz6URs4jYebccC0r1VHypcCRBaJxmPdkMBXantH+pG4aZcSMVtPNoMAXSghim1pKFTPgtc49nWkqxPW9Vp6NyjEWU823g0YhbbqF64ncntzKgyHt+dArJDW52+8wLC5SmDO3frPJ7vhmcNz5BfmpqampqaqtE/5FHzDE+Qk6EAAAAASUVORK5CYII=" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+    {% block js %}
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+    <script src="{% static 'core/js/title.js' %}"></script>
+    {% endblock %}
+</body>
+
+</html>
