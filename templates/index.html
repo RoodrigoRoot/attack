@@ -1,24 +1,15 @@
+{% extends 'core/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta name="description" content="CodeAttacl. Creamos un futuro, creamos esperanzas">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{% static 'core/css/normalize.css' %}">
-        <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-        <title>Code|Creamos un futuro</title>
-    </head>
-<body>
+
+
+    {% block content %}
     <header class="header">
         <div class="container">
-            <nav class="nav" id="nav">
+            <nav class="nav">
                 <h2>Logo</h2>
                 <ul>
                     <li>
-                        <a class="link-item" href="#nav">Inicio</a>
+                        <a class="link-item" href="#">Inicio</a>
                         <a class="link-item" href="#courses">Cursos</a>
                         <a class="link-item" href="#contact">Contacto</a>
                     </li>
@@ -28,7 +19,6 @@
         <div class="header-text">
             <h1 class="title animate__animated  animate__backInDown">CodeAttack</h1>
             <h2 class="subtitle">Creamos <span class="typed"></span> </h2>
-            <a class="btn btn-information" href="https://wa.me/527411196882/?text=información%20acerca%20de%20los%20cursos%20por%20favor">Más información</a>
 
         </div>
         <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
@@ -37,8 +27,57 @@
                     style="stroke: none; fill: #fff;"></path>
             </svg></div>
     </header>
-    {% block content %}
-    {% endblock %}
+    <main>
+        <section class="courses" id="courses">
+            <h2 class="title-section">Cursos</h2>
+            <div class="container">
+                <h3 class="subtitle-section">Desarrollo Web</h3>
+                <section class="web">
+                    {% for card in cards_web %}
+                    <article class="card">
+                        <div class="card-img">
+                            <a href="#">
+                                <img src="{{card.image.url}}" alt="Python">
+                            </a>
+                        </div>
+                        <h3 class="title-course">{{card.title}}</h3>
+                        <div class="card-information">
+                            <p><b>Inicio: </b>{{card.start|date:"SHORT_DATE_FORMAT"}}</p>
+                            <p><b>Costo:</b>{{card.price}}USD</p>
+                        </div>
+                        <div class="card-description-btn">
+                            <p>{{card.description}}</p>
+                            <a class="btn" href="#">Ver más -></a>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </section>
+
+                <h3 class="subtitle-section">Desarrollo Movíl</h3>
+                <section class="mobile">
+                    {% for card in cards_mobile %}
+                    <article class="card">
+                        <div class="card-img">
+                            <a href="#">
+                                <img src="{{card.image.url}}" alt="Python">
+                            </a>
+                        </div>
+                        <h3 class="title-course">{{card.title}}</h3>
+                        <div class="card-information">
+                            <p><b>Inicio:</b>{{card.start}}</p>
+                            <p><b>Costo:</b>{{card.price}}USD</p>
+                        </div>
+                        <div class="card-description-btn">
+                            <p>{{card.description}}</p>
+                            <a class="btn" href="#">Ver más -></a>
+                        </div>
+
+                    </article>
+                    {% endfor %}
+            </div>
+        </section>
+        </section>
+    </main>
     <section class="contact" id="contact">
         <div class="container">
             <h3 class="contact-title">¿Tienes alguna duda, proyecto o idea?</h3>
@@ -52,7 +91,7 @@
                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAC30lEQVR4nO2a0XXiMBBFKYESKIES6GDpIO4g6SDuYNNB3MGmg9DBpoPQwdLB3Q8ZMEaWJWvkwSdzv2NJ7yE9aRStVoZhGIZhGIZhGEkAW+0xPBzAL+CdK/9+vFHABngFvvHzoT1GFYAn4M+AKTdoj3U2gC3wu1060WiPuyjAup0tf1NM6XDQ1lAEYMdt4E6l0dYiBuOBO4UXbV3ZkBC4E1jmNs/EwE1FW2cS5AfuEajatt4i/v6gqzgSroGbM1vegHXb3nPsN9raB8EF7jP5gftFJ0dI29n2mh54wdVDEoF7Aupe2ynmAGx0XOiBmy2SgXvoisNlV2punRQtEQlcryh6y2KiOaAV0MgEro+GNoQ7fW2ZnmH1nKZIBa6PI7Dz9Lkl70e4a7OEMVKBO0Q90O+e/Bm69rUtYco5cL8zBxjiJoR7/VcC7R+lTTkH7qfA4EKcCBSPyJgDUhU8bp2/U7geavkgMO2Rudo4k1fB42ZMyWzp4g3hguYw1l+MQZ/CAxriUj8FfijxsWSZ0w7sJD2oHjf1U8AcyUPmpW8Jg7atCGmCIdzrv4Q5IFnB47b0F2TMGty6PeaU3BQqMYM8ZlW43SaFu/op0MeO8jtm+StWXD5UuPoolFfBEO61KXXGCaFTweOO/g1uy4aIrbv3/RzmwCNcsZI4hXFly1zUhWSXAfkD4BiPd8Xqg3lP6l022tpHodwBcIyjtvYogFrBHFjKOyBFg2pt7VGQftCUYqetPQpcyTE72rqjUTIov4KfCyWDGm3d0USI+UI+p5bzSGpEyOVeGnfNIsVyHkkFRDSevxW5uFOQOQ3cKTrKnN43TYY/h/kUZoK7EIs2p/dtxbS78sd9JNXHY1CT+P2UJbeMCn61ujOomdjGmrj3h2c2sioKwnWZ1AJt7RlfcrqPpFJB+EUF7h8JoSW3jAq+NIElt5z8KU275LqzaTm715zgQrzM4yjDMAzDMAzDMCL4D4h7dxlDYQZsAAAAAElFTkSuQmCC" /></a>
                 </div>
                 <div class="whatsapp">
-                    <a href="https://wa.me/527411196882/?text=información%20acerca%20de%20los%20cursos%20por%20favor">
+                    <a href="#">
                         <img
                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAEJ0lEQVR4nO2b63HiMBSFUwIluAQ6WDpIOog7CB3EHWw6wB1AB7iDuAPTAXTw7Q+JXSJfPWxLMjujM8OECZbu1dF96eGXl4KCgoKCgoKCgoJnAVAB78Bv4Ax8M8ZV/3YAPoFfa+udFMBWEzIIZEzBAXhdezzRALxqS4iNK8qyNmuPcRaAHbLrpCDqY+3xBgPYoNwgFBegA1qg0Z8v/b9uQj/fwHbt8TuBijODZyA3TcAbge6h+90DfQBRz2lNQO1RvAPeIsipUNbmwiHGmKLBQ84F2CWQWQEnh9wzzxDAPeQ0GeTvUG4rkpRavk85Gzm3FFbj0GODPaCv426owHkVFOpZKZtgj0373IpskGucCyv7vYOkfJOGqlUkt3qKOsTibkMu4VvLDC1O4bGgLVwK3E0O4WdB8JenTYVaN30C78mVfPmb3UxcSRkCLNbjjDvIma5OpuRP2VI8anILrB3P2zJdlvoE2dXSWJEWNrIeT5uz0OaOLAEdte4LntQlgiRXsdYXqLjjQhtdyXA9TikESeseV+x58xCUNmD+1GWU9lMIMWOJcxaQayUTdXRFZV0k69/FFCClTGf5HkhQG01Jty6SmzUxBUyeAUsbE9kqb1Q58oguZucjawho4wvSdTQFA8A4Dn2n7DwoyEntNOJnEb8uo3Qfs3NzoF1gOyl2QabYY+gy2QumdD6LIEvbO7Ku/J+ZoAp5ZT2Qce8oN0GT9lawZ7RjNCX9OiQlaHGAw77Tl2XPWJIfs3Op6JvsHtgP/o6+/lBWeGTmfhJjL+jn9GPrXFpX7Wb0s3GQZD06ZpwNh6lEMXGpNAlELNU9JIG6IrN5eN62pxRMFPJG3yz9XULMTDS7Eg0g6Yq+B0TYDRHfwnkvtNnN1d8mRAqy1YL+fCRNQeeRNSJ5rt4uIVIcaiL0K+34TUXr6F8KD9bnlw7GdLOBCMUeKgibq+0psB45IVt+miMqi7AmYv97YRJ8aB39SdZziaVvqMCoW6eo2FQTdrvMdx53FtqkPadHtiKnogtkVSirOmnCev33C0+CQI6Zt5iTaRMsbWE0SYVOhCZWqp3qHMKlZccuueBAYL950uVSwIwNtyyCA+AgJ8/NE+TT1ezbpxIc5ORxLa2EFPjy3t6S9do6yEmSQGyKSFVv5Xi+InHWAD6wL2bblLIlZQZDgYvxe4V6i+fw8OxAgjtBqGx6thCzCjlSkXhCrbhD3uIZNHmLLIqwl2PyudWDYiEnpaE4olzD+w4YKvi+oqzS5kp33FjrKiDuW+1LcbZ8puDEgu2XGAT5Zs9ET7z9HhcurH2BFPvNVlPRFuMtHsJePpmDnszn+1YgLy/uhNQEmDb/VulLXLUnYKGaHajlxU0Pbk+Esh2Vpvea5O7h0z98P+nJCX63bBXEIKSgoKCgoKCgoOD/wh9ebK9KB4T8FAAAAABJRU5ErkJggg==" /></a>
                 </div>
@@ -65,41 +104,10 @@
             </div>
         </div>
     </section>
-    <div class="btn-up">
-        <a href="#nav"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAkklEQVRoge3PyxVAQBQEUaEKRSZCbRs2jjkM83nTqiKoO01EREREFDB1CjBgwICJiCiVpFnS2vujSTv2yBt9wnqjE1hP9A3WC/0Q64HOxI6NfokdE/0ROxa6EHYMdGFsbHQlbEx0ZWwsdCNsDHRjbAx0TpKWC8DS+6tagAGbBRiwWYABmwUYsFmA3cFEREREv2oDwHtbFwFxf3wAAAAASUVORK5CYII="/></a>
-    </div>
-    <footer class="footer">
-        <div class="container">
-            <div class="social">
-                <div class="circle">
-                    <a href="#">
-                        <img
-                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB5klEQVRoge2Z0XWCQBBFKYESLIEOYgl2oB1ICXagHWgH2kHoADuADrSDmw9IDhJYZnYH5CS8c/gCZt7dnR0WiKJFixaZCEiAPXAFcn4rr8/tgeTdfqMoiiJgBRyBosPwkIr63tU7jMfA2cN0n85APJX5DfAwNP+tB7AZ2/xxBONtHccwHlMtwKl0xbKkJjb/A2Fl/mRoqgSy+pDoFGp+Y2A6w7E4qVqxS34Lm6ruQ7vNTpjLpQc+6wG4TGFeAADaUmJ4WoeUKfNJtNIEDF24uxEA5LOA396mqd7RArbAJ/r1VUjNJ4HmccTeBYYe3sUC6YgA0v7fp1QCcJsxwE0C0PUyMheAXAIQrBEBemP/W4BsMOBwPlXTkAS8TwxwUOS7SwJqptkCwDYfujZqAVAo8onaqKYmLQA0Ej3INDvRHPhoH47YSevarRJgJR2VUhn4RY64IW20FJmvE2k6w1QABw1ADDxnBPBE+1pJwCyMACAf/UYy71kwBtCPfiPhegYAay/zjaTq92NDgLAPW43Eqk8sRgAXE/M+EAYAtuYbBkTlFAhgUzYOE2sGntSeACWhC1YBEVOVVGebVQI861jT/GJqGYqpHngvM+K4vglQ1vdOb7xLVDvNFMeevTacMpffrIsW/QF9ATdAAkDj9gC7AAAAAElFTkSuQmCC" />
-                    </a>
-                </div>
-                <div class="circle">
-                    <a href="#">
-                        <img
-                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABrElEQVRoge2Y75GCMBBHLcESKIEOjhLsQDvwOqAE6UA6ODuADrQD7eDs4N2HrCPD8Mdkl3g3lzfj+Ink9zZsCKxWiUQikUhEAlgDe6ABvnE0wBEopq4LmSxTZB0ab9cJPUbTDQtkQAlcQiY8AUej8MeZ4F3OwEH+HxS+E647F6skpPIaqpBJi94gQRJSiLnbZjI88IFbkVojAG5Jc08BbfUf3PBp5BEBcNUsPcY5GYS/4Luh4Lp/iiuwfWGc1iC8/xbqMfkVt80N3loGAkVQeJl84znZFbdd7nGNl79VQCRqZQAtYQK4Jt7+AolMI/DgPDb60gSFF4H17OjL43/+6UloG1CL/xGiJzD2MIvFRiUgEtWbwt/V4d8sUZsJiERB3J7wOjS+Er6UXxMhfGsWXgTmDnbWFKYCIhGrD3Rb54zE0kcKv5eWQIklV8KucWckMhG5GIbfRQk/IPL158LjDnoluq8N8cPz/LxhEfzGUvc8zwfXAffgagwCd6mIsNtk2B8dWmLtND2RCrfkIdzk+ixq8BGZHPelrZZqtsC9V+FWAn9Gr3YikUgk/iU/imuGf4hhdBgAAAAASUVORK5CYII=" />
-                </div>
-                <div class="circle">
-                    <img
-                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABFUlEQVRoge2ZUQ3CMBRFkTAJSMABlYCEOWAS5gALSEACDpCwOQAHhw+aMJqOjbLstck9SX/am76epEubbrMRQogsARzQYU8HuBSBznbdH3QpAlkhAWuWEngADVD51vi+YgSaSK4pRuBHWQksLgAcIrlDSQL3oYRf/L0kATMk4DkDbdDOQSYcb4Hej115bbudr+GA2vevIuAiOTdVyC+wnqhX5yywm1mzzVLgh5oVI1eTLASALbAHtl8ylywFgFMwVz2Si24jU4EwM6CKZKOXQ2uBsY9zcr5cBMKzojiBsYNKAhKQgAQkUJbAkddlbNiOQSYc3wO3P+ZbVMAMCViTIrDKo+1M+hQBx/s1wZKelF9MQgixCk83CPCxMlbGvwAAAABJRU5ErkJggg==" />
-                    </a>
-                </div>
-                <div class="circle">
-                    <a href="#">
-                        <img
-                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACOElEQVRoge2Y0XGkMAyGUwIlUAIdhBLSwdFB6GDp4LaDpINNB6GD2w7YDnY7+O4B504ImzW2IdkZ/zO8gJD0W5Zk6+kpIyMj46EAlMAv4AR8AgPhGIyOk9FZbu34W4SzvjglJwI0wHUH579wBZqUzmtcgCPQAnXk0wLvRqdGHAnGbSNX/gbUSVbGbq8xNmQkyhiF78r5Ip27TpuVIvEZqqhU4azTuvrPTsNYiQ7iXatsl6GKv3BO6bSw8aIc7cQ3GYU2RPmHUHAM+L8Ans1j3XpApwj0DvsfIQR6oeBlhdMH7M1tMN8KIV8rmcZBrrfZu+eMdKL2kPftFZMab0h0epGY5sEQQkBikQDTauWL7o7OSXQ2I4C90R2BSshU5p1GsxeByiFTMG90VllBRDcqV4KnI7Ago1fV6bwiIdF9JwF5fvEutUxzxpqgmxNg3D6rVl/8q6Mw20Z7EIgyoAjUmUAAgWRbyCHzMEl82ZyALcRG5jHK6AKBgnljutfIdOPbvpG5CBg521HiN/OjxJtFrlnQuw8BI/sjD3MyQRcJGHl9IXfhhse0gelx+hZCIPRC02EfkVzMN6/BAAkuNCmulLV5Vk8zlP1+7f86hH9WK4gE02oVdKnfZazisK3HKt5dXiuSeRA3JfO3qXtFH6NMR+GKZ0IH2ntlPhioY5XaGtXA2Kxe+T/7CX0OjE1usNhZv/dXkNgaaZwXJCqmObEVerYsGIx50RpD5wQOn42ujtBqk5GRkfFt+Av9TBh+HSZPVQAAAABJRU5ErkJggg==" />
-                    </a>
-                </div>
-            </div>
-            <hr>
-            <h6>Copyright © 2020 CodeAttack. All rights reserved.</h6>
-        </div>
-    </footer>
-
-    {% block js %}
     {% endblock %}
-</body>
+    {% block js %}
+
+    {% endblock %}
+
+
 </html>

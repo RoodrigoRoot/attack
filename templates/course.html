@@ -1,24 +1,24 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta name="description" content="CodeAttacl. Creamos un futuro, creamos esperanzas">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{% static 'core/css/normalize.css' %}">
-        <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-        <title>Code|Creamos un futuro</title>
-    </head>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/course.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <title>Code|Creamos un futuro</title>
+</head>
+
 <body>
     <header class="header">
         <div class="container">
-            <nav class="nav" id="nav">
+            <nav class="nav">
                 <h2>Logo</h2>
                 <ul>
                     <li>
-                        <a class="link-item" href="#nav">Inicio</a>
+                        <a class="link-item" href="#">Inicio</a>
                         <a class="link-item" href="#courses">Cursos</a>
                         <a class="link-item" href="#contact">Contacto</a>
                     </li>
@@ -26,19 +26,104 @@
             </nav>
         </div>
         <div class="header-text">
-            <h1 class="title animate__animated  animate__backInDown">CodeAttack</h1>
-            <h2 class="subtitle">Creamos <span class="typed"></span> </h2>
-            <a class="btn btn-information" href="https://wa.me/527411196882/?text=información%20acerca%20de%20los%20cursos%20por%20favor">Más información</a>
+            <h1 class="title animate__animated  animate__backInDown">Desarrollo web con Python</h1>
+            <a href="#" class="btn-course">Aplicar</a>
 
         </div>
         <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
                 style="height: 100%; width: 100%;">
-                <path d="M-3.96,28.90 C150.00,150.00 610.61,138.45 520.31,-73.73 L516.92,155.22 L0.00,150.00 Z"
+                <path d="M-17.50,-0.70 C500.56,154.23 739.27,103.90 506.77,47.65 L501.12,150.28 L0.00,150.00 Z"
                     style="stroke: none; fill: #fff;"></path>
             </svg></div>
     </header>
-    {% block content %}
-    {% endblock %}
+    <main>
+        <section class="box">
+            <div class="container">
+                <div class="content-box">
+                    <figure>
+                        <a href="#">
+                            <img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAADOElEQVRoge1azW0qMRB2CZSwR8j4kCNCGWs7yEcFoQPoIHQAHYQOkg5CB6SD0AHpIO+A3xOIsXfXHgNP2k/yDcbz7djj+TOmR48ePXocMRyjIjd9IcbKMj7J4ds6/J4ucvi2jE9irMhNX4ZjVLfWuxOGY1TWYS6Ra7v8f+d3TX44RkWMt1SSQfKMt7siXtUYlCAqEa9qDG5KdsSAdTiUJnuyDiMGbkKWGKuWlvmyDssRAzTB44WcCR5HDJDD2v+2jczV1YhWNQaW8dmg0J4Yi5S7533Bghj7KHHGe/EjXtUYkMMuosgPMRZa+xFjYR1+It58V5S0ZbxHrPpRYnPvFD9iltbe0xhjDDmsI2TVrBrc/2jtkKXXqpt5bywe4Wt6TWLMQkdcTY+qxiD09NziifCkxSdL5UoRY6N1jO0TauvweraeUCfoJB5vYmy6yjqDj4tFB5UizzosBXnLFFkhR5YVhgas+5N6dDQJ+6t2cZ+TrRyxbrJH1iRsTPhoJ1lZEkaMfapyxugT9npeRGRJRhGT9cz31jut5dlKcFpnMoWPSA7fnYSEjvNd5aUeKrpKbx0xvsqpnQcpyyLGrL0AOYxcFtM4E5K+ncJNy9jeQ1TVFmLoy9i2FiA6LCF57wqtSOtC3wkesxyX5ARylfJy1Z+lE9npOveEe8LJSt0nYTFc03BahQiLTqtLGFzqWSpFWONZKhJ4FLNwbuAhhpYOu1zFChK+KB13Ci1LJQ8lCKvpqpZnnqAEYUlmUt4uFgC65pktlMslrJa3R0o8s1TltAmrlni8QKmIl1z/1SQcqpdnlWpDVk7t52gSDvW5sqsyBQrx2TWtYoV4Y8L139z7nIpIqyW5Xn6BSDPtcE3Snux1+lyxdql1mKtuJsA6zEP7q7dL/6KpMV2qId7UiNfe82zzhsGTg6a1vVWDU0LE+LrOnEfM0i5vks4/ha9Nk3ylRiyCaLjTp+R3xFg98PQ5NLb0wNPn46xldGCm/J1tgvfewSmbAuuqIxYi/BEXgxPNRYzNzUcPT+EHytSJE2Nzj028f2g9SRcnmTzJd1N48jNyWFvGNlBU2FvG1s9azv47kj169OhREn8AsaTcPy6eVkIAAAAASUVORK5CYII=" />
+                        </a>
+                        <figcaption><b>Información</b></figcaption>
+                    </figure>
+                    <figure>
+                        <a href="#">
+                            <img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAABV0lEQVRoge2awYnDMBBFVYJL8DEgBfYYQkZRCT8VrUtICekk6WBLiDvYEnYPvizYVmRJSBH7P8zFeD7/IZAHM0pRFEVRVDvay+VsLD5bqL1cztGg+ogPbfFlLH6aKsF9d0C/CbZ36IzFd/XwkaUtnr1DF366glvt0Bmgr+HAFs/agXOccjDwismQXILHzHd6lu69kDkJOLjZ77sUbMjkTeAyzX5fAhNYKWVOcMYzUWXPXB145db1ZSEwgf3BCByP+RJkmL03XVqrU1X2zLWBI70JXKbZ70tgAitOWv/gs0RgAufNXB2Yk1aQN4HLNPt9CUzgeG8Cl2n2+xKYwPHeBC7T7PclMIHjvQmc1Gxy7FIJ7jPf6Vm6dwqwFowr0M2UFoxbgG+1A2eoIRi4d+haPmUtGDctpiml1O6AfnHN6N1L8Ni8evhXr/4vvVWd4KJBKYqiKKq8fgFYYKuFqtiFpAAAAABJRU5ErkJggg==" />
+                        </a>
+                        <figcaption>Temario</figcaption>
+                    </figure>
+                    <figure>
+                        <a href="#">
+                            <img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAADGElEQVRoge1a3XHiMBBWCZTgR8juzfDIMKziDvJRwdHB0QHuIHQAJVwH0EHSAXQAHXAPZxImJxlpZQcf+JvZNyHxeX+0PzKmQ4cOHToYwxa/2OJQyiJg/eK8ngSzb/iL9WEgAFucLoUsdgMBXGvJYvd1vWtta+Ei8CGCDY0xpDGGLNj41pHF7tY8gsAWhZdsvBS35lOJ/ghZ6Yd1ET5kOXq35uUFCdY1kv1r2oL1zQhlOXokWNWsRbX2SbBq1AKa0GCrLaAlmv1H000SvjU5p7SZcOHYM/ka6wi3hPDRlSOTYH5XhEmw5gnyqn37I2RksWwN4Yv7N4boO40xjDmHxhiyxVHxUeu7j/mzbIsiq/0DWtIcWIZ64SvbQny1P0KmPtikBTJfGVoJEswSDlz69u2PkD3J9KW0msWTTF9c67IcPaWWL61sFvOF1RmVy2/7I2S+2pcs3lzmT4LfKYQ5JgMjwV57kHM/i7cr2pg7PnrS/UyCfTDhlMM8+6VoSitFMGFj9Fp2BayUmNC4ds9wNeICD5u59sty9HiCvLSegi0KsliyYJviQi5RNwBZsI0mrGy+9UfISDBLJi/Yqsga85EENO8/X89NaDTEZnd1ET6R4DWFNCsDZxLhqr5xqHmTnf7UZl4q8xZsVGS1QauKPAs2JHjlMtNii8UPmT778m5tdFcFLWUerRXnPEnrUtGBU+s/qaQ9/0W7X/Et2nXuF+CLJHivk3CUljmlUnF0N2iMIQnevb8RbJ0FRMItwRbHYMJJ5WFFY7wkPucy0xoIUBXBU9o+0TPmgQDKrOeQ2gAwJiFgCfZJs+VSG1Em7qtxQ5Hl6F0rKV0mzHWNV8smXlS6RxZvmqyHJ8hjyZJg3chQTWliqxDiPEEe2xk9S+1EUwhf+ranET/jxCFdWwmfXD7GdzxqeUjCjUiThJN6xQ1JeEYVi4d78nBxH7dB08fG7t9Q3N2zpWuoYyb0VYt15OWNgh/p6eEZlVWWYHvxuNTb91ZND24F5/NhT9nmK0P/q+fDxnzkyEcOLNv4swx1Pn7p0KFDh4fEHz/FT3x8JDITAAAAAElFTkSuQmCC" />
+                        </a>
+                        <figcaption>Costos</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+        <section class="learn">
+            <div class="container">
+                <div class="learn-container">
+                    <h2>Lo que aprenderas</h2>
+                    <div class="technology">
+                        <div class="tech-img">
+                            <img src="" alt="Django">
+                        </div>
+                        <p class="text-tech">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, aspernatur
+                            illum repellendus
+                            impedit ad earum voluptas officiis nemo minima eaque.</p>
+                    </div>
+                    <div class="technology">
+                        <div class="tech-img">
+                            <img src="" alt="Django">
+                        </div>
+                        <p class="text-tech">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, aspernatur
+                            illum repellendus
+                            impedit ad earum voluptas officiis nemo minima eaque.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="information">
+            <div class="container">
+               <div class="information-container">
+                <h2>Información</h2>
+                <details>
+                    <summary><b> ¿Que se necesita para este curso? </b></summary>
+                    <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international
+                        pavilions, award-winning fireworks and seasonal special events.</p>
+                </details>
+                <details>
+                    <summary><b> ¿Que se necesita para este curso? </b></summary>
+                    <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international
+                        pavilions, award-winning fireworks and seasonal special events.</p>
+                </details>
+                <details>
+                    <summary><b> ¿Que se necesita para este curso? </b></summary>
+                    <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international
+                        pavilions, award-winning fireworks and seasonal special events.</p>
+                </details>
+                <details>
+                    <summary><b> ¿Que se necesita para este curso? </b></summary>
+                    <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international
+                        pavilions, award-winning fireworks and seasonal special events.</p>
+                </details>
+                <details>
+                    <summary><b> ¿Que se necesita para este curso? </b></summary>
+                    <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international
+                        pavilions, award-winning fireworks and seasonal special events.</p>
+                </details>
+               </div>
+
+            </div>
+        </section>
+
+    </main>
     <section class="contact" id="contact">
         <div class="container">
             <h3 class="contact-title">¿Tienes alguna duda, proyecto o idea?</h3>
@@ -52,7 +137,7 @@
                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAC30lEQVR4nO2a0XXiMBBFKYESKIES6GDpIO4g6SDuYNNB3MGmg9DBpoPQwdLB3Q8ZMEaWJWvkwSdzv2NJ7yE9aRStVoZhGIZhGIZhGEkAW+0xPBzAL+CdK/9+vFHABngFvvHzoT1GFYAn4M+AKTdoj3U2gC3wu1060WiPuyjAup0tf1NM6XDQ1lAEYMdt4E6l0dYiBuOBO4UXbV3ZkBC4E1jmNs/EwE1FW2cS5AfuEajatt4i/v6gqzgSroGbM1vegHXb3nPsN9raB8EF7jP5gftFJ0dI29n2mh54wdVDEoF7Aupe2ynmAGx0XOiBmy2SgXvoisNlV2punRQtEQlcryh6y2KiOaAV0MgEro+GNoQ7fW2ZnmH1nKZIBa6PI7Dz9Lkl70e4a7OEMVKBO0Q90O+e/Bm69rUtYco5cL8zBxjiJoR7/VcC7R+lTTkH7qfA4EKcCBSPyJgDUhU8bp2/U7geavkgMO2Rudo4k1fB42ZMyWzp4g3hguYw1l+MQZ/CAxriUj8FfijxsWSZ0w7sJD2oHjf1U8AcyUPmpW8Jg7atCGmCIdzrv4Q5IFnB47b0F2TMGty6PeaU3BQqMYM8ZlW43SaFu/op0MeO8jtm+StWXD5UuPoolFfBEO61KXXGCaFTweOO/g1uy4aIrbv3/RzmwCNcsZI4hXFly1zUhWSXAfkD4BiPd8Xqg3lP6l022tpHodwBcIyjtvYogFrBHFjKOyBFg2pt7VGQftCUYqetPQpcyTE72rqjUTIov4KfCyWDGm3d0USI+UI+p5bzSGpEyOVeGnfNIsVyHkkFRDSevxW5uFOQOQ3cKTrKnN43TYY/h/kUZoK7EIs2p/dtxbS78sd9JNXHY1CT+P2UJbeMCn61ujOomdjGmrj3h2c2sioKwnWZ1AJt7RlfcrqPpFJB+EUF7h8JoSW3jAq+NIElt5z8KU275LqzaTm715zgQrzM4yjDMAzDMAzDMCL4D4h7dxlDYQZsAAAAAElFTkSuQmCC" /></a>
                 </div>
                 <div class="whatsapp">
-                    <a href="https://wa.me/527411196882/?text=información%20acerca%20de%20los%20cursos%20por%20favor">
+                    <a href="#">
                         <img
                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAEJ0lEQVR4nO2b63HiMBSFUwIluAQ6WDpIOog7CB3EHWw6wB1AB7iDuAPTAXTw7Q+JXSJfPWxLMjujM8OECZbu1dF96eGXl4KCgoKCgoKCgoJnAVAB78Bv4Ax8M8ZV/3YAPoFfa+udFMBWEzIIZEzBAXhdezzRALxqS4iNK8qyNmuPcRaAHbLrpCDqY+3xBgPYoNwgFBegA1qg0Z8v/b9uQj/fwHbt8TuBijODZyA3TcAbge6h+90DfQBRz2lNQO1RvAPeIsipUNbmwiHGmKLBQ84F2CWQWQEnh9wzzxDAPeQ0GeTvUG4rkpRavk85Gzm3FFbj0GODPaCv426owHkVFOpZKZtgj0373IpskGucCyv7vYOkfJOGqlUkt3qKOsTibkMu4VvLDC1O4bGgLVwK3E0O4WdB8JenTYVaN30C78mVfPmb3UxcSRkCLNbjjDvIma5OpuRP2VI8anILrB3P2zJdlvoE2dXSWJEWNrIeT5uz0OaOLAEdte4LntQlgiRXsdYXqLjjQhtdyXA9TikESeseV+x58xCUNmD+1GWU9lMIMWOJcxaQayUTdXRFZV0k69/FFCClTGf5HkhQG01Jty6SmzUxBUyeAUsbE9kqb1Q58oguZucjawho4wvSdTQFA8A4Dn2n7DwoyEntNOJnEb8uo3Qfs3NzoF1gOyl2QabYY+gy2QumdD6LIEvbO7Ku/J+ZoAp5ZT2Qce8oN0GT9lawZ7RjNCX9OiQlaHGAw77Tl2XPWJIfs3Op6JvsHtgP/o6+/lBWeGTmfhJjL+jn9GPrXFpX7Wb0s3GQZD06ZpwNh6lEMXGpNAlELNU9JIG6IrN5eN62pxRMFPJG3yz9XULMTDS7Eg0g6Yq+B0TYDRHfwnkvtNnN1d8mRAqy1YL+fCRNQeeRNSJ5rt4uIVIcaiL0K+34TUXr6F8KD9bnlw7GdLOBCMUeKgibq+0psB45IVt+miMqi7AmYv97YRJ8aB39SdZziaVvqMCoW6eo2FQTdrvMdx53FtqkPadHtiKnogtkVSirOmnCev33C0+CQI6Zt5iTaRMsbWE0SYVOhCZWqp3qHMKlZccuueBAYL950uVSwIwNtyyCA+AgJ8/NE+TT1ezbpxIc5ORxLa2EFPjy3t6S9do6yEmSQGyKSFVv5Xi+InHWAD6wL2bblLIlZQZDgYvxe4V6i+fw8OxAgjtBqGx6thCzCjlSkXhCrbhD3uIZNHmLLIqwl2PyudWDYiEnpaE4olzD+w4YKvi+oqzS5kp33FjrKiDuW+1LcbZ8puDEgu2XGAT5Zs9ET7z9HhcurH2BFPvNVlPRFuMtHsJePpmDnszn+1YgLy/uhNQEmDb/VulLXLUnYKGaHajlxU0Pbk+Esh2Vpvea5O7h0z98P+nJCX63bBXEIKSgoKCgoKCgoOD/wh9ebK9KB4T8FAAAAABJRU5ErkJggg==" /></a>
                 </div>
@@ -65,9 +150,7 @@
             </div>
         </div>
     </section>
-    <div class="btn-up">
-        <a href="#nav"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAkklEQVRoge3PyxVAQBQEUaEKRSZCbRs2jjkM83nTqiKoO01EREREFDB1CjBgwICJiCiVpFnS2vujSTv2yBt9wnqjE1hP9A3WC/0Q64HOxI6NfokdE/0ROxa6EHYMdGFsbHQlbEx0ZWwsdCNsDHRjbAx0TpKWC8DS+6tagAGbBRiwWYABmwUYsFmA3cFEREREv2oDwHtbFwFxf3wAAAAASUVORK5CYII="/></a>
-    </div>
+
     <footer class="footer">
         <div class="container">
             <div class="social">
@@ -98,8 +181,6 @@
             <h6>Copyright © 2020 CodeAttack. All rights reserved.</h6>
         </div>
     </footer>
-
-    {% block js %}
-    {% endblock %}
 </body>
+
 </html>
